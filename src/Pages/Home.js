@@ -25,7 +25,6 @@ const Home = () => {
         </HomeInfo>
         <ButtonContainer>
           <Explore>EXPLORE</Explore>
-          <Hover></Hover>
         </ButtonContainer>
       </HomePage>
     </section>
@@ -35,7 +34,7 @@ const Home = () => {
 export default Home;
 
 const Background = styled.div`
-  height: 150vh;
+  height: 120vh;
   width: 100vw;
   position: absolute;
   z-index: 0;
@@ -43,6 +42,7 @@ const Background = styled.div`
   background-image: url(${({ background }) => background});
   background-repeat: no-repeat;
   background-size: cover;
+
   @media (min-width: 500px) {
     background-image: url(${({ backgroundtablet }) => backgroundtablet});
   }
@@ -55,14 +55,14 @@ const HomePage = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 5rem auto;
   z-index: 99;
   width: 90vw;
   height: 100vh;
   @media (min-width: 500px) {
     width: 60vw;
   }
-  @media (min-width: 800px) {
+  @media (min-width: 1000px) {
     display: grid;
     grid-template-columns: 2fr 1fr;
     align-items: end;
@@ -82,18 +82,25 @@ const ButtonContainer = styled.div`
   @media (min-width: 600px) {
     justify-self: end;
   }
-  @media (min-width: 800px) {
+  &:hover {
+    background-color: #24262f;
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    @media (min-width: 600px) {
+      height: 400px;
+      width: 400px;
+    }
   }
 `;
 const Explore = styled.button`
   border-radius: 50%;
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
   letter-spacing: 1.5px;
   border: none;
   font-size: 23px;
-  z-index: 99;
-
+  z-index: 999;
   @media (min-width: 600px) {
     height: 250px;
     width: 250px;
@@ -101,19 +108,9 @@ const Explore = styled.button`
     justify-self: end;
   }
   @media (min-width: 800px) {
-    height: 250px;
-    width: 250px;
     font-size: 30px;
     justify-self: end;
   }
-`;
-const Hover = styled.div`
-  display: inline-block;
-  background-color: #24262f;
-  height: 350px;
-  width: 350px;
-  border-radius: 50%;
-  position: absolute;
 `;
 
 const HomeInfo = styled.div`

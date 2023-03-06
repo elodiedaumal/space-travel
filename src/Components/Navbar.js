@@ -1,37 +1,44 @@
 import React from 'react';
+import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom';
 import logo from '../assets/shared/logo.svg';
+import menubar from '../assets/shared/icon-hamburger.svg';
+
 import styled from 'styled-components';
 
 const Navbar = () => {
+  const { sidebar, handleClick } = useGlobalContext();
   return (
     <Nav className='.navtext'>
       <Img src={logo} alt='logo' />
       <Line></Line>
       <Blur>
         <LinksBox>
-          <Link>
+          <Link to='/'>
             <li>
               <Number>00</Number> HOME
             </li>
           </Link>
-          <Link>
+          <Link to='/destination'>
             <li>
               <Number>01</Number> DESTINATION
             </li>
           </Link>
-          <Link>
+          <Link to='/crew'>
             <li>
               <Number>02</Number> CREW
             </li>
           </Link>
-          <Link>
+          <Link to='/technologie'>
             <li>
               <Number>03</Number> TECHNOLOGY
             </li>
           </Link>
         </LinksBox>
       </Blur>
+      <MenuBar onClick={handleClick}>
+        {!sidebar ? <img src={menubar} alt='' /> : ''}
+      </MenuBar>
     </Nav>
   );
 };
@@ -39,21 +46,22 @@ const Navbar = () => {
 export default Navbar;
 
 const Nav = styled.nav`
-  display: none;
-
-  @media (min-width: 500px) {
+    z-index: 999;
     position: sticky;
-    top: 0;
-    display: grid;
+justify-content: space-between;
+    display: flex;
+ margin:1.5rem auto;
+     width: 80vw;
+     align-items: center;
+  @media (min-width: 500px) {
+     display: grid;
+    position: sticky;
     grid-template-columns: auto 65vw;
     height: 7rem;
-    z-index: 999;
     align-items: center;
-    width: 90vw;
-    margin 0 auto;
-  }
+    margin 0 auto;}
   @media (min-width: 1000px) {
-    z-index: 999;
+
     top: 50px;
     width: 100vw;
     grid-template-columns: auto 1fr auto;
@@ -62,19 +70,17 @@ const Nav = styled.nav`
 `;
 
 const Img = styled.img`
-  @media (min-width: 500px) {
-    z-index: 999;
+  z-index: 999;
+  width: 2rem;
+  height: 2rem;
+  @media (min-width: 1000px) {
+    margin-left: 4rem;
     width: 4rem;
     height: 4rem;
   }
-  @media (min-width: 1000px) {
-    margin-left: 4rem;
-  }
 `;
 const Line = styled.div`
-  @media (min-width: 500px) {
-    display: none;
-  }
+  display: none;
   @media (min-width: 1000px) {
     display: inline-block;
     z-index: 999;
@@ -87,7 +93,7 @@ const Line = styled.div`
 const LinksBox = styled.ul`
   @media (min-width: 500px) {
     z-index: 999;
-    display: grid;
+
     align-items: center;
     column-gap: 2rem;
     padding-left: 0rem;
@@ -104,9 +110,13 @@ const LinksBox = styled.ul`
 `;
 
 const Blur = styled.div`
-  background-color: rgb(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  height: 100%;
+  display: none;
+  @media (min-width: 500px) {
+    display: inline-block;
+    background-color: rgb(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    height: 100%;
+  }
 `;
 const Number = styled.span`
   @media (min-width: 500px) {
@@ -116,5 +126,12 @@ const Number = styled.span`
     display: inline-block;
     font-weight: bold;
     margin-right: 0.5rem;
+  }
+`;
+const MenuBar = styled.button`
+  border: none;
+  background: none;
+  @media (min-width: 500px) {
+    display: none;
   }
 `;
