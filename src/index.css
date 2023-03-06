@@ -1,13 +1,109 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --dark: hsl(230, 35%, 7%);
+  --purple: hsl(231, 77%, 89%);
+  --white: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: var(--white);
+  font-weight: 400;
+}
+
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+p {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 2px;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Bellefair', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Bellefair', serif;
+  color: var(--white);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+h1 {
+  font-size: 90px;
+  @media (min-width: 500px) {
+    font-size: 120px;
+  }
+  @media (min-width: 800px) {
+    font-size: 150px;
+  }
+}
+h2 {
+  font-size: 50px;
+  @media (min-width: 500px) {
+    font-size: 800px;
+  }
+  @media (min-width: 800px) {
+    font-size: 100px;
+  }
+}
+h3 {
+  font-size: 30px;
+  @media (min-width: 500px) {
+    font-size: 56px;
+  }
+  @media (min-width: 800px) {
+    font-size: 56px;
+  }
+}
+h4 {
+  font-size: 20px;
+  @media (min-width: 500px) {
+    font-size: 32px;
+  }
+  @media (min-width: 800px) {
+    font-size: 32px;
+  }
+}
+h5 {
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  font-family: 'Barlow Condensed', sans-serif;
+  @media (min-width: 500px) {
+    font-size: 28px;
+    letter-spacing: 4.75px;
+  }
+  @media (min-width: 800px) {
+    font-size: 28px;
+    letter-spacing: 4.75px;
+  }
+}
+
+.subheadingbig {
+  font-size: 28px;
+}
+.subheadingsmall {
+  font-size: 14px;
+  letter-spacing: 2.3px;
+}
+.navtext {
+  font-size: 16px;
+  letter-spacing: 2.7px;
 }
