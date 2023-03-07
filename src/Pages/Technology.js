@@ -8,7 +8,8 @@ import tabletimg from '../assets/technology/background-technology-tablet.jpg';
 
 const Technology = () => {
   const [data, setData] = useState(technology[0]);
-  const [number, setNumber] = useState(1);
+
+  const [ActiveT, setActiveT] = useState('Launch vehicle');
   const showdestination = (index) => {
     setData(technology[index]);
   };
@@ -24,26 +25,33 @@ const Technology = () => {
         <Span>03</Span> space launch 101
       </Title>
       <Container>
-        <div>
+        <ImgContainer>
           <Img src={data.images.landscape} alt={data.name} />
-        </div>
+          <ImgDesktop src={data.images.portrait} alt={data.name} />
+        </ImgContainer>
         <InfoContainer>
-          <div className='btn-container'>
-            {technology.map((member, index) => {
+          <LinkContainer className='btn-container'>
+            {technology.map((tech, index) => {
               return (
                 <Dot
+                  className={tech.name === ActiveT ? 'active' : ''}
                   type='button'
                   key={index}
-                  onClick={() => showdestination(index)}
+                  onClick={() => {
+                    showdestination(index);
+                    setActiveT(technology[index].name);
+                  }}
                 >
                   {index + 1}
                 </Dot>
               );
             })}
-          </div>
-          <h5>the terminology...</h5>
-          <h4>{data.name}</h4>
-          <p>{data.description}</p>
+          </LinkContainer>
+          <TextContainer>
+            <Terminology>the terminology...</Terminology>
+            <Name>{data.name}</Name>
+            <p>{data.description}</p>
+          </TextContainer>
         </InfoContainer>
       </Container>
     </section>
@@ -90,17 +98,44 @@ const InfoContainer = styled.div`
     row-gap: 2rem;
   }
   @media (min-width: 800px) {
-    row-gap: 2.5rem;
+    gap: 3rem;
+    grid-row: 1;
+    display: grid;
+    grid-template-column: 1fr auto;
   }
 `;
 const Img = styled.img`
   width: 100vw;
   margin-top: 2rem;
+
   @media (min-width: 500px) {
-    width: 35vw;
+    width: 100vw;
   }
   @media (min-width: 800px) {
-    max-width: 450px;
+    display: none;
+  }
+`;
+const ImgDesktop = styled.img`
+  display: none;
+  @media (min-width: 500px) {
+    display: none;
+  }
+  @media (min-width: 800px) {
+    display: inline-block;
+    width: 100%;
+  }
+`;
+const ImgContainer = styled.div`
+  @media (min-width: 800px) {
+    grid-column: 2;
+  }
+`;
+const TextContainer = styled.div`
+  @media (min-width: 800px) {
+    grid-column: 2;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
   }
 `;
 const Span = styled.span`
@@ -127,25 +162,41 @@ const Container = styled.article`
     grid-template-columns: auto 450px;
     text-align: left;
     gap: 5rem;
-    align-items: end;
+
+    align-items: center;
   }
 `;
-const Line = styled.div`
-    width: 95%;
-    height: 1px;
-    background-color: rgb(255, 255, 255, 0.3);
-   
-  }
-`;
+
 const Dot = styled.button`
-  background: #fff;
-  border: none;
-  height: 1rem;
-  width: 1rem;
+  background: var(--dark);
+  color: var(--white);
+  border: 0.5px solid var(--white);
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
   margin: 0 0.5rem;
-  &:focus {
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
+  &.active {
+    background: var(--white);
+    color: var(--dark);
   }
+  @media (min-width: 800px) {
+    height: 4rem;
+    width: 4rem;
+    font-size: 25px;
+  }
+`;
+const LinkContainer = styled.div`
+  @media (min-width: 800px) {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+`;
+const Terminology = styled.h5`
+  color: var(--purple);
+  font-size: 16px;
+`;
+const Name = styled.h4`
+  font-size: 45px;
 `;

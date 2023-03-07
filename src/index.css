@@ -30,6 +30,9 @@ p {
   line-height: 1.5;
   letter-spacing: 1.5px;
   color: var(--purple);
+  @media (min-width: 800px) {
+    line-height: 2;
+  }
 }
 
 button {
