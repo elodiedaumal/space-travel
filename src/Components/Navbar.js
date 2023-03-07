@@ -15,24 +15,24 @@ const Navbar = () => {
       <Blur>
         <LinksBox>
           <Link to='/'>
-            <li>
+            <TextLink>
               <Number>00</Number> HOME
-            </li>
+            </TextLink>
           </Link>
           <Link to='/destination'>
-            <li>
+            <TextLink>
               <Number>01</Number> DESTINATION
-            </li>
+            </TextLink>
           </Link>
           <Link to='/crew'>
-            <li>
+            <TextLink>
               <Number>02</Number> CREW
-            </li>
+            </TextLink>
           </Link>
           <Link to='/technologie'>
-            <li>
+            <TextLink>
               <Number>03</Number> TECHNOLOGY
-            </li>
+            </TextLink>
           </Link>
         </LinksBox>
       </Blur>
@@ -93,8 +93,7 @@ const Line = styled.div`
 const LinksBox = styled.ul`
   @media (min-width: 500px) {
     z-index: 999;
-
-    align-items: center;
+    align-items: flex-end;
     column-gap: 2rem;
     padding-left: 0rem;
     height: 100%;
@@ -106,6 +105,17 @@ const LinksBox = styled.ul`
     width: 55vw;
     justify-content: left;
     grid-template-columns: repeat (4, 1fr);
+  }
+`;
+const TextLink = styled.li`
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  padding-bottom: 3rem;
+  &:hover,
+  &:active,
+  &:focus {
+    padding-bottom: 2.75rem;
+    border-bottom: 4px solid #fff;
   }
 `;
 

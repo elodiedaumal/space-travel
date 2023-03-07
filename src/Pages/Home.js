@@ -65,7 +65,6 @@ const HomePage = styled.div`
   @media (min-width: 1000px) {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    align-items: end;
     max-width: 1100px;
     width: 90vw;
     height: 90vh;
@@ -73,7 +72,7 @@ const HomePage = styled.div`
 `;
 const ButtonContainer = styled.div`
   border-radius: 50%;
-  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,10 +103,6 @@ const Explore = styled.button`
   @media (min-width: 600px) {
     height: 250px;
     width: 250px;
-    font-size: 30px;
-    justify-self: end;
-  }
-  @media (min-width: 800px) {
     font-size: 30px;
     justify-self: end;
   }
