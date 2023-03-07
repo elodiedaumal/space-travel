@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { destinations } from '../data';
 
@@ -8,7 +8,6 @@ import tabletimg from '../assets/destination/background-destination-tablet.jpg';
 
 const Destnation = () => {
   const [destination, setDestination] = useState(destinations[0]);
-  const [active, setActive] = useState(true);
 
   const showdestination = (index) => {
     console.log(index);
@@ -27,27 +26,33 @@ const Destnation = () => {
       </Title>
       <Container>
         <Img src={destination.images.webp} alt={destination.name} />
-        <div className='btn-container'>
-          {destinations.map((category, index) => {
-            return (
-              <Button
-                type='button'
-                className='subheadingsmall'
-                key={index}
-                onClick={() => showdestination(index)}
-              >
-                {category.name}
-              </Button>
-            );
-          })}
-        </div>
-        <h2>{destination.name}</h2>
-        <p>{destination.description}</p>
-        <Line></Line>
-        <p className='subheadingsmall'>AVG. DISTANCE</p>
-        <p className='subheadingbig'>{destination.distance}</p>
-        <p className='subheadingsmall'>EST TRAVEL TIME</p>
-        <p className='subheadingbig'>{destination.travel}</p>
+        <InfoContainer>
+          <div className='btn-container'>
+            {destinations.map((category, index) => {
+              return (
+                <Button
+                  type='button'
+                  className='subheadingsmall'
+                  key={index}
+                  onClick={() => showdestination(index)}
+                >
+                  {category.name}
+                </Button>
+              );
+            })}
+          </div>
+          <h2>{destination.name}</h2>
+          <p>{destination.description}</p>
+          <Line></Line>
+          <DistanceContainer>
+            <p className='subheadingsmall'>AVG. DISTANCE</p>
+            <DistanceNum className='subheadingbig'>
+              {destination.distance}
+            </DistanceNum>
+            <p className='subheadingsmall'>EST TRAVEL TIME</p>
+            <p className='subheadingbig'>{destination.travel}</p>
+          </DistanceContainer>
+        </InfoContainer>
       </Container>
     </section>
   );
@@ -66,6 +71,7 @@ const Background = styled.div`
   background-size: cover;
   @media (min-width: 500px) {
     background-image: url(${({ backgroundtablet }) => backgroundtablet});
+    height: 150vh;
   }
   @media (min-width: 800px) {
     background-image: url(${({ backgrounddesktop }) => backgrounddesktop});
@@ -80,6 +86,15 @@ const Title = styled.h5`
     margin-top: 3rem;
   }
   @media (min-width: 800px) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+`;
+const InfoContainer = styled.div`
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
   }
 `;
 const Img = styled.img`
@@ -88,7 +103,7 @@ const Img = styled.img`
     width: 35vw;
   }
   @media (min-width: 800px) {
-    width: 20vw;
+    width: 450px;
   }
 `;
 const Span = styled.span`
@@ -111,6 +126,11 @@ const Container = styled.article`
     max-width: 1100px;
     width: 90vw;
     height: 100%;
+    display: grid;
+    grid-template-columns: auto 450px;
+    text-align: left;
+    gap: 5rem;
+    align-items: end;
   }
 `;
 const Line = styled.div`
@@ -128,5 +148,24 @@ const Button = styled.button`
   &:focus {
     text-decoration: underline;
     text-decoration-thickness: 4px;
+  }
+`;
+const DistanceContainer = styled.div`
+  @media (min-width: 500px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 50vw;
+  }
+  @media (min-width: 800px) {
+    width: 100%;
+  }
+`;
+
+const DistanceNum = styled.p`
+  @media (min-width: 500px) {
+    grid-row: 2;
+    align-self: start;
+  }
+  @media (min-width: 800px) {
   }
 `;
