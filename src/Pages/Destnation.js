@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { destinations } from '../data';
-import { useGlobalContext } from '../context';
+
 import deskimg from '../assets/destination/background-destination-desktop.jpg';
 import mobileimg from '../assets/destination/background-destination-mobile.jpg';
 import tabletimg from '../assets/destination/background-destination-tablet.jpg';

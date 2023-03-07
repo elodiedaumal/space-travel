@@ -8,6 +8,8 @@ import tabletimg from '../assets/crew/background-crew-tablet.jpg';
 
 const Crew = () => {
   const [data, setData] = useState(crew[0]);
+  const [ActiveC, setActiveC] = useState('Douglas Hurley');
+
   const showdestination = (index) => {
     setData(crew[index]);
   };
@@ -28,18 +30,22 @@ const Crew = () => {
           <Line></Line>
         </div>
         <InfoContainer>
-          <div className='btn-container'>
+          <Buttons className='btn-container'>
             {crew.map((member, index) => {
               return (
                 <Dot
+                  className={member.name === ActiveC ? 'active' : ''}
                   type='button'
                   key={index}
-                  onClick={() => showdestination(index)}
+                  onClick={() => {
+                    showdestination(index);
+                    setActiveC(crew[index].name);
+                  }}
                 ></Dot>
               );
             })}
-          </div>
-          <h5>{data.role}</h5>
+          </Buttons>
+          <Role>{data.role}</Role>
           <h4>{data.name}</h4>
           <p>{data.bio}</p>
         </InfoContainer>
@@ -82,20 +88,23 @@ const Title = styled.h5`
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
+  row-gap: 1rem;
 
   @media (min-width: 500px) {
-    row-gap: 2rem;
+    grid-row: 1;
+    display: grid;
   }
   @media (min-width: 800px) {
     row-gap: 2.5rem;
   }
 `;
 const Img = styled.img`
-  width: 40vw;
+  height: 30vh;
   margin-top: 2rem;
   @media (min-width: 500px) {
-    width: 35vw;
+    width: 50vw;
+    height: 100%;
+    margin-bottom: -1rem;
   }
   @media (min-width: 800px) {
     max-width: 450px;
@@ -114,8 +123,9 @@ const Container = styled.article`
   row-gap: 2rem;
   margin: 0 auto;
   @media (min-width: 500px) {
-    width: 70vw;
-    margin-top: 3rem;
+    display: grid;
+
+    width: 60vw;
   }
   @media (min-width: 800px) {
     max-width: 1100px;
@@ -129,21 +139,35 @@ const Container = styled.article`
   }
 `;
 const Line = styled.div`
-    width: 95%;
-    height: 1px;
-    background-color: rgb(255, 255, 255, 0.3);
-   
+  width: 90vw;
+  height: 1px;
+  background-color: rgb(255, 255, 255, 0.15);
+  margin-top: -4px;
+  @media (min-width: 500px) {
+    display: none;
   }
 `;
 const Dot = styled.button`
-  background: #fff;
+  background: rgb(255, 255, 255, 0.3);
   border: none;
-  height: 1rem;
-  width: 1rem;
+  height: 0.8rem;
+  width: 0.8rem;
   border-radius: 50%;
-  margin: 0 0.5rem;
-  &:focus {
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
+  margin: 1rem 0.5rem;
+  &.active {
+    background: #fff;
+  }
+`;
+const Buttons = styled.div`
+  @media (min-width: 500px) {
+    grid-row: 4;
+  }
+`;
+const Role = styled.h5`
+  margin-bottom: -0.5rem;
+  font-family: 'Bellefair', serif;
+  color: rgb(255, 255, 255, 0.7);
+  @media (min-width: 500px) {
+    font-size: 16px;
   }
 `;
