@@ -3,38 +3,35 @@ import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom';
 import logo from '../assets/shared/logo.svg';
 import menubar from '../assets/shared/icon-hamburger.svg';
+import { links } from '../data';
 
 import styled from 'styled-components';
 
 const Navbar = () => {
-  const { sidebar, handleClick } = useGlobalContext();
+  const { sidebar, handleClick, isActive, setIsActive } = useGlobalContext();
+
   return (
     <NavContainer>
-      <Nav className='.navtext'>
+      <Nav className='navtext'>
         <Img src={logo} alt='logo' />
         <Line></Line>
         <Blur>
           <LinksBox>
-            <Link to='/'>
-              <TextLink>
-                <Number>00</Number> HOME
-              </TextLink>
-            </Link>
-            <Link to='/destination'>
-              <TextLink>
-                <Number>01</Number> DESTINATION
-              </TextLink>
-            </Link>
-            <Link to='/crew'>
-              <TextLink>
-                <Number>02</Number> CREW
-              </TextLink>
-            </Link>
-            <Link to='/technology'>
-              <TextLink>
-                <Number>03</Number> TECHNOLOGY
-              </TextLink>
-            </Link>
+            {links.map((link, index) => {
+              const linkurl = `/${link.text}`;
+
+              return (
+                <Link
+                  key={index}
+                  to={link.text === 'home' ? '/' : linkurl}
+                  onClick={() => setIsActive(index)}
+                >
+                  <TextLink className={link.num == isActive ? 'active' : ''}>
+                    <Number>{link.num}</Number> {link.text}
+                  </TextLink>
+                </Link>
+              );
+            })}
           </LinksBox>
         </Blur>
         <MenuBar onClick={handleClick}>
@@ -95,9 +92,10 @@ const Line = styled.div`
     display: inline-block;
     z-index: 999;
     width: 95%;
-    height: 1px;
-    background-color: rgb(255, 255, 255, 0.5);
-    margin-left: 4rem;
+    height: 0.5px;
+    background-color: rgb(255, 255, 255, 0.2);
+
+    margin-left: 3rem;
   }
 `;
 const LinksBox = styled.ul`
@@ -119,12 +117,12 @@ const LinksBox = styled.ul`
 const TextLink = styled.li`
   font-size: 16px;
   letter-spacing: 2.7px;
-  padding-bottom: 2.5rem;
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    padding-bottom: 2.25rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 4px solid rgba(255, 255, 255, 0);
+  &.active {
+    border-bottom: 4px solid #fff;
+  }
+  &:hover {
     border-bottom: 4px solid;
   }
 `;
@@ -133,8 +131,8 @@ const Blur = styled.div`
   display: none;
   @media (min-width: 500px) {
     display: inline-block;
-    background-color: rgb(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
     height: 100%;
   }
 `;

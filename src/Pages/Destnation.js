@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { destinations } from '../data';
-
+import { useGlobalContext } from '../context';
 import deskimg from '../assets/destination/background-destination-desktop.jpg';
 import mobileimg from '../assets/destination/background-destination-mobile.jpg';
 import tabletimg from '../assets/destination/background-destination-tablet.jpg';
 
 const Destnation = () => {
   const [destination, setDestination] = useState(destinations[0]);
+  const [ActiveD, setActiveD] = useState('Moon');
 
   const showdestination = (index) => {
     setDestination(destinations[index]);
@@ -31,9 +32,16 @@ const Destnation = () => {
               return (
                 <Button
                   type='button'
-                  className='subheadingsmall'
+                  className={
+                    category.name === ActiveD
+                      ? 'subheadingsmall active'
+                      : 'subheadingsmall'
+                  }
                   key={index}
-                  onClick={() => showdestination(index)}
+                  onClick={() => {
+                    showdestination(index);
+                    setActiveD(destinations[index].name);
+                  }}
                 >
                   {category.name}
                 </Button>
@@ -146,12 +154,13 @@ const Line = styled.div`
 `;
 const Button = styled.button`
   background: none;
-  color: #fff;
+  color: var(--purple);
   border: none;
   margin: 0 0.7rem;
-  &:focus {
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
+  &.active {
+    padding-bottom: 1rem;
+    border-bottom: 4px solid #fff;
+    color: #fff;
   }
 `;
 const DistanceContainer = styled.div`

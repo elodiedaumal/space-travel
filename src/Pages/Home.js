@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import homeimg from '../assets/home/background-home-desktop.jpg';
 import mobileimg from '../assets/home/background-home-mobile.jpg';
@@ -23,7 +24,7 @@ const Home = () => {
             world experience!
           </p>
         </HomeInfo>
-        <ButtonContainer>
+        <ButtonContainer to='/destination'>
           <Explore>EXPLORE</Explore>
         </ButtonContainer>
       </HomePage>
@@ -64,25 +65,24 @@ const HomePage = styled.div`
   }
   @media (min-width: 1000px) {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    max-width: 1100px;
+    grid-template-columns: 2fr 400px;
+    max-width: 1200px;
     width: 90vw;
     height: 100%;
   }
 `;
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(Link)`
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: 1.5px;
   z-index: 99;
   @media (min-width: 600px) {
-    justify-self: end;
+    // justify-self: end;
   }
   &:hover {
-    background-color: #24262f;
+    background-color: rgb(36, 38, 47, 0.8);
     height: 240px;
     width: 240px;
     border-radius: 50%;

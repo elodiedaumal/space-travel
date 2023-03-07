@@ -4,6 +4,8 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
+  const [isActive, setIsActive] = useState(0);
+
   const handleClick = () => {
     setSidebar(!sidebar);
   };
@@ -12,6 +14,8 @@ const AppProvider = ({ children }) => {
       value={{
         sidebar,
         handleClick,
+        isActive,
+        setIsActive,
       }}
     >
       {children}
