@@ -28,7 +28,7 @@ const Sidebar = () => {
               <Number>02</Number> CREW
             </TextLink>
           </Link>
-          <Link to='/technologie'>
+          <Link to='/technology'>
             <TextLink>
               <Number>03</Number> TECHNOLOGY
             </TextLink>

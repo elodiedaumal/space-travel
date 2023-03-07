@@ -9,45 +9,52 @@ import styled from 'styled-components';
 const Navbar = () => {
   const { sidebar, handleClick } = useGlobalContext();
   return (
-    <Nav className='.navtext'>
-      <Img src={logo} alt='logo' />
-      <Line></Line>
-      <Blur>
-        <LinksBox>
-          <Link to='/'>
-            <TextLink>
-              <Number>00</Number> HOME
-            </TextLink>
-          </Link>
-          <Link to='/destination'>
-            <TextLink>
-              <Number>01</Number> DESTINATION
-            </TextLink>
-          </Link>
-          <Link to='/crew'>
-            <TextLink>
-              <Number>02</Number> CREW
-            </TextLink>
-          </Link>
-          <Link to='/technologie'>
-            <TextLink>
-              <Number>03</Number> TECHNOLOGY
-            </TextLink>
-          </Link>
-        </LinksBox>
-      </Blur>
-      <MenuBar onClick={handleClick}>
-        {!sidebar ? <img src={menubar} alt='' /> : ''}
-      </MenuBar>
-    </Nav>
+    <NavContainer>
+      <Nav className='.navtext'>
+        <Img src={logo} alt='logo' />
+        <Line></Line>
+        <Blur>
+          <LinksBox>
+            <Link to='/'>
+              <TextLink>
+                <Number>00</Number> HOME
+              </TextLink>
+            </Link>
+            <Link to='/destination'>
+              <TextLink>
+                <Number>01</Number> DESTINATION
+              </TextLink>
+            </Link>
+            <Link to='/crew'>
+              <TextLink>
+                <Number>02</Number> CREW
+              </TextLink>
+            </Link>
+            <Link to='/technology'>
+              <TextLink>
+                <Number>03</Number> TECHNOLOGY
+              </TextLink>
+            </Link>
+          </LinksBox>
+        </Blur>
+        <MenuBar onClick={handleClick}>
+          {!sidebar ? <img src={menubar} alt='' /> : ''}
+        </MenuBar>
+      </Nav>
+    </NavContainer>
   );
 };
 
 export default Navbar;
 
+const NavContainer = styled.div`
+  @media (min-width: 1000px) {
+    padding-top: 1rem;
+  }
+`;
 const Nav = styled.nav`
     z-index: 999;
-    position: sticky;
+position: static;
 justify-content: space-between;
     display: flex;
  margin:1.5rem auto;
@@ -55,14 +62,13 @@ justify-content: space-between;
      align-items: center;
   @media (min-width: 500px) {
      display: grid;
-    position: sticky;
+ 
     grid-template-columns: auto 65vw;
-    height: 7rem;
+    height: 6rem;
     align-items: center;
     margin 0 auto;}
   @media (min-width: 1000px) {
 
-    top: 50px;
     width: 100vw;
     grid-template-columns: auto 1fr auto;
    
@@ -99,7 +105,6 @@ const LinksBox = styled.ul`
     z-index: 999;
     align-items: flex-end;
     column-gap: 2rem;
-    padding-left: 0rem;
     height: 100%;
     justify-content: center;
     display: flex;
@@ -114,12 +119,13 @@ const LinksBox = styled.ul`
 const TextLink = styled.li`
   font-size: 16px;
   letter-spacing: 2.7px;
-  padding-bottom: 3rem;
+  padding-bottom: 2.5rem;
+  &:link,
+  &:visited,
   &:hover,
-  &:active,
-  &:focus {
-    padding-bottom: 2.75rem;
-    border-bottom: 4px solid #fff;
+  &:active {
+    padding-bottom: 2.25rem;
+    border-bottom: 4px solid;
   }
 `;
 

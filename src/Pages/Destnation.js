@@ -10,7 +10,6 @@ const Destnation = () => {
   const [destination, setDestination] = useState(destinations[0]);
 
   const showdestination = (index) => {
-    console.log(index);
     setDestination(destinations[index]);
   };
 
@@ -82,8 +81,7 @@ const Title = styled.h5`
   @media (min-width: 500px) {
     text-align: left;
     width: 90vw;
-    margin: 0 auto;
-    margin-top: 3rem;
+    margin: 3rem auto;
   }
   @media (min-width: 800px) {
     margin-top: 5rem;
@@ -91,19 +89,25 @@ const Title = styled.h5`
   }
 `;
 const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+
+  @media (min-width: 500px) {
+    row-gap: 2rem;
+  }
   @media (min-width: 800px) {
-    display: flex;
-    flex-direction: column;
     row-gap: 2.5rem;
   }
 `;
 const Img = styled.img`
   width: 40vw;
+  margin-top: 2rem;
   @media (min-width: 500px) {
     width: 35vw;
   }
   @media (min-width: 800px) {
-    width: 450px;
+    max-width: 450px;
   }
 `;
 const Span = styled.span`
