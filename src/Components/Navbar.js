@@ -51,7 +51,7 @@ const Nav = styled.nav`
 justify-content: space-between;
     display: flex;
  margin:1.5rem auto;
-     width: 80vw;
+     width: 90vw;
      align-items: center;
   @media (min-width: 500px) {
      display: grid;
@@ -73,6 +73,10 @@ const Img = styled.img`
   z-index: 999;
   width: 2rem;
   height: 2rem;
+  @media (min-width: 500px) {
+    width: 3rem;
+    height: 3rem;
+  }
   @media (min-width: 1000px) {
     margin-left: 4rem;
     width: 4rem;

@@ -34,10 +34,10 @@ const Home = () => {
 export default Home;
 
 const Background = styled.div`
-  height: 120vh;
+  height: 100%;
   width: 100vw;
   position: absolute;
-  z-index: 0;
+  z-index: -999;
   margin-top: -12rem;
   background-image: url(${({ background }) => background});
   background-repeat: no-repeat;
@@ -67,7 +67,7 @@ const HomePage = styled.div`
     grid-template-columns: 2fr 1fr;
     max-width: 1100px;
     width: 90vw;
-    height: 90vh;
+    height: 100%;
   }
 `;
 const ButtonContainer = styled.div`

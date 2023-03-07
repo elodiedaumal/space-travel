@@ -98,12 +98,18 @@ h5 {
 
 .subheadingbig {
   font-size: 28px;
+  text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 .subheadingsmall {
   font-size: 14px;
   letter-spacing: 2.3px;
+  text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 .navtext {
   font-size: 16px;
   letter-spacing: 2.7px;
+  text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
 }

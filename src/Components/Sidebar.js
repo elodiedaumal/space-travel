@@ -12,26 +12,26 @@ const Sidebar = () => {
         <BtnContainer>
           <Img src={menuclose} alt='' onClick={handleClick} />
         </BtnContainer>
-        <LinksBox>
+        <LinksBox onClick={handleClick}>
           <Link to='/'>
-            <li>
+            <TextLink>
               <Number>00</Number> HOME
-            </li>
+            </TextLink>
           </Link>
           <Link to='/destination'>
-            <li>
+            <TextLink>
               <Number>01</Number> DESTINATION
-            </li>
+            </TextLink>
           </Link>
           <Link to='/crew'>
-            <li>
+            <TextLink>
               <Number>02</Number> CREW
-            </li>
+            </TextLink>
           </Link>
           <Link to='/technologie'>
-            <li>
+            <TextLink>
               <Number>03</Number> TECHNOLOGY
-            </li>
+            </TextLink>
           </Link>
         </LinksBox>
       </Sidebarsection>
@@ -50,6 +50,9 @@ const Sidebarsection = styled.aside`
   width: 65vw;
   backdrop-filter: blur(20px);
   background-color: rgb(11, 13, 23, 0.3);
+  @media (min-width: 500px) {
+    display: none;
+  }
 `;
 
 const LinksBox = styled.ul`
@@ -59,7 +62,7 @@ const LinksBox = styled.ul`
   height: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 2rem;
   margin-top: 4rem;
 `;
 const BtnContainer = styled.div`
@@ -68,10 +71,27 @@ const BtnContainer = styled.div`
   padding: 2rem;
 `;
 
+const Img = styled.img`
+  text-align: right;
+`;
+
+const TextLink = styled.li`
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+  }
+`;
+
 const Number = styled.span`
   font-weight: bold;
   margin-right: 0.5rem;
-`;
-const Img = styled.img`
-  text-align: right;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
 `;
