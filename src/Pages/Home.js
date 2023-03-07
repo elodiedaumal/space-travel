@@ -35,7 +35,7 @@ const Home = () => {
 export default Home;
 
 const Background = styled.div`
-  height: 100%;
+  height: 150vh;
   width: 100vw;
   position: absolute;
   z-index: -999;

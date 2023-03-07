@@ -57,7 +57,7 @@ const Crew = () => {
 export default Crew;
 
 const Background = styled.div`
-  height: 100%;
+  height: 150vh;
   width: 100vw;
   position: absolute;
   z-index: -9990;
@@ -71,6 +71,7 @@ const Background = styled.div`
   }
   @media (min-width: 800px) {
     background-image: url(${({ backgrounddesktop }) => backgrounddesktop});
+    height: 135vh;
   }
 `;
 const Title = styled.h5`

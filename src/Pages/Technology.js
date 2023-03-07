@@ -61,7 +61,7 @@ const Technology = () => {
 export default Technology;
 
 const Background = styled.div`
-  height: 100%;
+  height: 150vh;
   width: 100vw;
   position: absolute;
   z-index: -9990;
