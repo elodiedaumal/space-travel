@@ -46,8 +46,8 @@ const Crew = () => {
             })}
           </Buttons>
           <Role>{data.role}</Role>
-          <h4>{data.name}</h4>
-          <p>{data.bio}</p>
+          <h3>{data.name}</h3>
+          <Description>{data.bio}</Description>
         </InfoContainer>
       </Container>
     </section>
@@ -67,7 +67,7 @@ const Background = styled.div`
   background-size: cover;
   @media (min-width: 500px) {
     background-image: url(${({ backgroundtablet }) => backgroundtablet});
-    height: 150vh;
+    height: 100%;
   }
   @media (min-width: 800px) {
     background-image: url(${({ backgrounddesktop }) => backgrounddesktop});
@@ -82,7 +82,6 @@ const Title = styled.h5`
   }
   @media (min-width: 800px) {
     margin-top: 5rem;
-    margin-bottom: 5rem;
   }
 `;
 const InfoContainer = styled.div`
@@ -96,6 +95,7 @@ const InfoContainer = styled.div`
   }
   @media (min-width: 800px) {
     row-gap: 2.5rem;
+    align-items: center;
   }
 `;
 const Img = styled.img`
@@ -107,7 +107,8 @@ const Img = styled.img`
     margin-bottom: -1rem;
   }
   @media (min-width: 800px) {
-    max-width: 450px;
+    max-width: 550px;
+    margin-top: -5rem;
   }
 `;
 const Span = styled.span`
@@ -157,6 +158,12 @@ const Dot = styled.button`
   &.active {
     background: #fff;
   }
+  @media (min-width: 800px) {
+    height: 1.1rem;
+    width: 1.1rem;
+
+    margin-top: 5rem;
+  }
 `;
 const Buttons = styled.div`
   @media (min-width: 500px) {
@@ -168,6 +175,14 @@ const Role = styled.h5`
   font-family: 'Bellefair', serif;
   color: rgb(255, 255, 255, 0.7);
   @media (min-width: 500px) {
-    font-size: 16px;
+    font-size: 20px;
+  }
+  @media (min-width: 800px) {
+    font-size: 28px;
+  }
+`;
+const Description = styled.p`
+  @media (min-width: 800px) {
+    max-width: 80%;
   }
 `;
