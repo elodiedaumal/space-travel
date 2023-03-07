@@ -15,7 +15,7 @@ const Home = () => {
       ></Background>
       <HomePage>
         <HomeInfo>
-          <h5>So, you want to travel to </h5>
+          <Title>So, you want to travel to </Title>
           <h1>SPACE</h1>
           <p>
             Let’s face it; if you want to go to space, you might as well
@@ -78,9 +78,7 @@ const ButtonContainer = styled(Link)`
   align-items: center;
   letter-spacing: 1.5px;
   z-index: 99;
-  @media (min-width: 600px) {
-    // justify-self: end;
-  }
+
   &:hover {
     background-color: rgb(36, 38, 47, 0.8);
     height: 240px;
@@ -105,6 +103,12 @@ const Explore = styled.button`
     width: 250px;
     font-size: 30px;
     justify-self: end;
+  }
+`;
+const Title = styled.h5`
+  color: var(--purple);
+  @media (min-width: 1000px) {
+    padding-top: 3rem;
   }
 `;
 
