@@ -14,6 +14,7 @@ const Navbar = () => {
     <NavContainer>
       <Nav className='navtext'>
         <Img src={logo} alt='logo' />
+
         <Line></Line>
         <Blur>
           <LinksBox>
